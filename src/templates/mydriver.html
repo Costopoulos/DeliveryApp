@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Ο οδηγός σας</h1>
+
+    <p>Αυτός είναι ο οδηγός σας για σήμερα</p>
+
+    <p>
+    {{  name }}, {{ lastname }}, {{phone}}, {{active}}
+
+{% for order in orders%}
+    <li> {{order.store.name}} </li>
+{% endfor %}
+
+{% endblock %} 
