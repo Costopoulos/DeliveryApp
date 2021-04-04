@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
     <h1>Ο οδηγός σας</h1>
 
     <p>Αυτός είναι ο οδηγός σας για σήμερα</p>
 
     <p>
-    {{  name }}, {{ lastname }}, {{phone}}, {{active}}
+    {{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{username}}
 
 {% for order in orders%}
     <li> {{order.store.name}} </li>
 {% endfor %}
+{%else%}
+<p>Anonymous User</p>
 
+{%endif%}
 {% endblock %} 

@@ -13,16 +13,18 @@ from .forms import OrderForm
 myid=1
 
 def mydriver_view(request):
-    myid=1
-      # get the current date
-    today = datetime.today()
-    orders = order.objects.all()
-    obj= driver.objects.get(id=1)
+
+    user=request.user
+
+    mystore=store.objects.get(user_id=user)
+    obj= mystore.driver
     context = { 
         'name' : obj.first_name,
         'lastname' : obj.last_name,
         'phone' : obj.phoneNo,
-        'active'  :  obj.isBusy        
+        'active'  :  obj.isBusy ,
+        'username'  : user.username
+               
     }
     
     return render(request, "mydriver.html", context) 
@@ -39,10 +41,27 @@ def order_create_view(request):
 
 
 def today_orders_list(request):
+    user=request.user
     today=datetime.today()
-    print(today.time)
-    queryset=order.objects.all()
+    mystore=store.objects.get(user_id=user)
+    queryset=order.objects.filter(store=mystore)
     context ={
         "object_list": queryset
     }
     return render(request, "order_list.html", context)
+
+    from django.utils import timezone
+from django.views.generic.list import ListView
+
+
+class ArticleListView(ListView):
+
+    model = order
+    paginate_by = 100  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
+
+
