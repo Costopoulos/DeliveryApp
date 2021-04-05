@@ -2,12 +2,13 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-    <h1>Ο οδηγός σας</h1>
+
+    <h1>{{  store  }}</h1>
 
     <p>Αυτός είναι ο οδηγός σας για σήμερα</p>
 
     <p>
-    {{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{username}}
+    {{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{  username  }}
 
 {% for order in orders%}
     <li> {{order.store.name}} </li>

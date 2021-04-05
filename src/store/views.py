@@ -18,7 +18,9 @@ def mydriver_view(request):
 
     mystore=store.objects.get(user_id=user)
     obj= mystore.driver
+
     context = { 
+        'store' : mystore.name,
         'name' : obj.first_name,
         'lastname' : obj.last_name,
         'phone' : obj.phoneNo,
