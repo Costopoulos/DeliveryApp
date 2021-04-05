@@ -23,6 +23,7 @@ from django.conf.urls import url
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.authtoken import views
 from driver.views import OrdeListView, mystores_jsonview
+from pages.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,5 +35,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     # path('rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls'))
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
+    path('test/', greeklogin),
 ]
