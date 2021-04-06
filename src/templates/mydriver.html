@@ -1,19 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if user.is_authenticated %}
-    <h1>Ο οδηγός σας</h1>
+    {% if user.is_authenticated %}
+        <h1>Γεια σας Ο οδηγός σας</h1>
 
-    <p>Αυτός είναι ο οδηγός σας για σήμερα</p>
+        <!--<h2>Αυτός είναι ο οδηγός σας για σήμερα</h2>-->
 
-    <p>
-    {{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{username}}
+        <p>{{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{username}}</p>
 
-{% for order in orders%}
-    <li> {{order.store.name}} </li>
-{% endfor %}
-{%else%}
-<p>Anonymous User</p>
+        <table>  
+            <thead>  
+                <tr>  
+                    <td>Όνομα</td>  
+                    <td>Επίθετο</td>  
+                    <td>Τηλέφωνο</td>
+                    <td>Είναι Ενεργός</td>
+                </tr>  
+            </thead>  
+                          
+            <tr>  
+                <td><input type="radio" name="read_id" value='.$row["card_id"].' required>'.$row["card_id"].'</td>  
+                <td>'.$row["full_name"].'</td> 
+                <td>'.$row["birth_date"].'</td> 
+                <td>'.$row["phone"].'</td> 
+                <td>'.$row["card_points"].'</td> 
+                <td>'.$row["age"].'</td>
+                <td>'.$row["family_status"].'</td>
+                <td>'.$row["address"].'</td>
+                <td>'.$row["postal_code"].'</td>
+                <td>'.$row["city"].'</td> 
+                <td>'.$row["pet"].'</td> 
+                <td>'.$row["gender"].'</td>  
+                <td>'.$row["email"].'</td>  
+            </tr>  
+        </table> 
 
-{%endif%}
+        {% for order in orders%}
+            <li> {{order.store.name}} </li>
+        {% endfor %}
+
+    {%else%}
+        <p>Anonymous User</p>
+    {%endif%}
 {% endblock %} 
