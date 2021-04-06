@@ -1,8 +1,88 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <!-- Required meta tags -->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+      <style>
+        td {
+          text-align: center;
+          vertical-align: middle;
+          margin:auto
+        }
+        tr {
+          text-align: center;
+          vertical-align: middle;
+        }
+        .checkmark {
+          display: inline-block;
+          transform: rotate(45deg);
+          height: 25px;
+          width: 12px;
+          margin-left: 60%; 
+          border-bottom: 7px solid #78b13f;
+          border-right: 7px solid #78b13f;
+        }
+        #orangeBox {
+          background: #f90;
+          color: #fff;
+          font-family: 'Helvetica', 'Arial', sans-serif;
+          font-size: 2em;
+          font-weight: bold;
+          text-align: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 5px;
+        }
+        #greenBox {
+          background: #006400;
+          color: #fff;
+          font-family: 'Helvetica', 'Arial', sans-serif;
+          font-size: 2em;
+          font-weight: bold;
+          text-align: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 5px;
+        }
+      </style>
+      <link rel="stylesheet" type="text/css" href="website_style.css">
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript">
+        function scrollto(div)
+        {
+          $('html,body').animate(
+          {
+            scrollTop: $("#"+div).offset().top
+          },'slow');
+        }
+      </script>
+      </head>
+      <body>
+    <div id="header">
+        <li onclick="scrollto('yourdriver');">Ο οδηγός σας</li>
+        <li onclick="scrollto('neworder');">Νέα Παραγγελία</li>
+        <li onclick="scrollto('history');">Ιστορικό</li>
+    </div> -->
+
+
+    <!-- <div id='yourdriver'>
+        <h1>Ο οδηγός σας</h1>
+    </div>
+    <div id='neworder'>
+        <h1>Νέα Παραγγελία</h1>
+    </div>
+    <div id='yourdriver'>
+        <h1>Ιστορικό</h1>
+    </div> -->
+    {% block base %}
+      {%if user.is_authenticated%} <h1><b>Γεια σας {{user}}</b></h1>  {%endif%}
+    {% endblock %}
+
     {% if user.is_authenticated %}
-        <h1><b>Γεια σας {{store}}</b></h1>
+        <!-- <h1><b>Γεια σας {{store}}</b></h1> -->
         <h2>{{storeaddress}}</h2>
 
         <!--<h2>Αυτός είναι ο οδηγός σας για σήμερα</h2>-->
@@ -35,6 +115,12 @@
         {% for order in orders%}
             <li> {{order.store.name}} </li>
         {% endfor %}
+
+        <!-- <form method='POST'>{% csrf_token %}
+            {{  form.as_p }}
+            <input type= 'submit' value='Save'>
+        </form> -->
+       
 
     {%else%}
         <p>Anonymous User</p>

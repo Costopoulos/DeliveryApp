@@ -22,5 +22,5 @@ class order(models.Model):
     price           = models.DecimalField(max_digits=7, decimal_places=2)
     created_on      = models.DateTimeField(auto_now_add=True)
     finished_on     = models.DateTimeField(auto_now=True)
-    running_now     = models.BooleanField(default=False)
+    running_now     = models.BooleanField(default=False) #if order is picked up
     store           = models.ForeignKey(store, on_delete=models.CASCADE)

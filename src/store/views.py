@@ -35,12 +35,18 @@ def mydriver_view(request):
 def order_create_view(request):
     form=OrderForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        instance = form.save(commit=False)
+        #instance.order = request.user.id
+        #instance.order = request.user.driver
+        instance.order = request.user.store
+        instance.save()
+
 
     context = { 
         'form': form
     }
     return render( request, "order_create.html", context)
+    #return render(request, "mydriver.html", context)
 
 
 def today_orders_list(request):

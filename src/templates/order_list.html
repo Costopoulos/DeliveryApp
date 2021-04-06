@@ -3,7 +3,28 @@
 {% block content %}
 <!-- {{ object_list }} -->
 {% for instance in object_list%}
-    <p>{{instance.adress_to}}-{{ instance.created_on}}<p>
+    <p>{{instance.adress_to}}-{{ instance.created_on}}</p>
 
+
+<table>  
+    <thead>  
+        <tr>  
+            <td><b>Διεύθυνση</b></td>  
+            <td><b>Ώρα παραλαβής</b></td>  
+            <td><b>Έχει παραληφθεί</b></td>
+            <td><b>Τιμή</b></td>
+            <td><b>Δημιουργήθηκε</b></td>
+            <!-- <td>ραδόθηκε ώρα</b></td> -->
+        </tr>  
+    </thead>  
+                  
+    <tr>  
+        <td>{{instance.adress_to}}</td> 
+        <td>{{instance.time_to_pickup}}</td> 
+        <td>{{instance.running_now}}</td> 
+        <td>{{instance.price}}</td> 
+        <td>{{instance.created_on}}</td>
+    </tr> 
+</table> 
 {% endfor%}
 {% endblock %} 

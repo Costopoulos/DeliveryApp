@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+<!-- Required meta tags -->
+     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
       <style>
         td {
@@ -48,25 +48,24 @@
           border-radius: 5px;
         }
       </style>
-    <title>DemoPower</title>
+  <title>DemoPower</title>
   </head>
   <body>
-    <body>
-      <nav class="navbar navbar-dark bg-dark">
-      <!-- <nav> -->
-        <!-- Navbar content -->
-        <a href="/">Αρχική</a>
-        <a href="/create">Νέα Παραγγελία</a>
-        <a href="/orders">Ιστορικό</a>
-      </nav>
-        {% block base %}
-          {%if user.is_authenticated%} <h1>Γεια σας {{user}}</h1>  {%endif%}
-        {% endblock %}
-        {% block content %}
+    <nav class="navbar navbar-dark bg-dark">
+    
+      
+      <a href="/store">Αρχική</a>
+      <a href="/create">Νέα Παραγγελία</a>
+      <a href="/orders">Ιστορικό</a>
+</nav>
+    <!-- {% block base %}
+    {%if user.is_authenticated%} <h1><b>Γεια σας {{user}}</b></h1>  {%endif%}
+    {% endblock %} -->
+    
+    {% block content %}
 
-        {% endblock %} 
+    {% endblock %} 
      
-    </body>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
