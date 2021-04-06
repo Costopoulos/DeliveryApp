@@ -18,7 +18,10 @@ def mydriver_view(request):
 
     mystore=store.objects.get(user_id=user)
     obj= mystore.driver
+
     context = { 
+        'store' : mystore.name,
+        'storeaddress': mystore.adress,
         'name' : obj.first_name,
         'lastname' : obj.last_name,
         'phone' : obj.phoneNo,
@@ -50,7 +53,7 @@ def today_orders_list(request):
     }
     return render(request, "order_list.html", context)
 
-    from django.utils import timezone
+from django.utils import timezone
 from django.views.generic.list import ListView
 
 

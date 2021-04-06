@@ -1,13 +1,77 @@
 <!doctype html>
-<html>
-<head>
-    <title>Wagwan</title>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-   {% block content %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+      <style>
+        td {
+          text-align: center;
+          vertical-align: middle;
+          margin:auto
+        }
+        tr {
+          text-align: center;
+          vertical-align: middle;
+        }
+        .checkmark {
+          display: inline-block;
+          transform: rotate(45deg);
+          height: 25px;
+          width: 12px;
+          margin-left: 60%; 
+          border-bottom: 7px solid #78b13f;
+          border-right: 7px solid #78b13f;
+        }
+        #orangeBox {
+          background: #f90;
+          color: #fff;
+          font-family: 'Helvetica', 'Arial', sans-serif;
+          font-size: 2em;
+          font-weight: bold;
+          text-align: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 5px;
+        }
+        #greenBox {
+          background: #006400;
+          color: #fff;
+          font-family: 'Helvetica', 'Arial', sans-serif;
+          font-size: 2em;
+          font-weight: bold;
+          text-align: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 5px;
+        }
+      </style>
+    <title>DemoPower</title>
+  </head>
+  <body>
+    <body>
+      <nav class="navbar navbar-dark bg-dark">
+      <!-- <nav> -->
+        <!-- Navbar content -->
+        <a href="/">Αρχική</a>
+        <a href="/create">Νέα Παραγγελία</a>
+        <a href="/orders">Ιστορικό</a>
+      </nav>
+        {% block base %}
+          {%if user.is_authenticated%} <h1>Γεια σας {{user}}</h1>  {%endif%}
+        {% endblock %}
+        {% block content %}
 
-   {% endblock %} 
-
+        {% endblock %} 
+     
     </body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 </html>

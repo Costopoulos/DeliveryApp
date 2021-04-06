@@ -2,37 +2,34 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>Γεια σας Ο οδηγός σας</h1>
+        <h1><b>Γεια σας {{store}}</b></h1>
+        <h2>{{storeaddress}}</h2>
 
         <!--<h2>Αυτός είναι ο οδηγός σας για σήμερα</h2>-->
-
-        <p>{{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{username}}</p>
+        <!-- <p>{{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{username}}</p> -->
 
         <table>  
             <thead>  
                 <tr>  
-                    <td>Όνομα</td>  
-                    <td>Επίθετο</td>  
-                    <td>Τηλέφωνο</td>
-                    <td>Είναι Ενεργός</td>
+                    <td><b>Όνομα</b></td>  
+                    <td><b>Επίθετο</b></td>  
+                    <td><b>Τηλέφωνο</b></td>
+                    <td><b>Είναι Ενεργός</b></td>
                 </tr>  
             </thead>  
                           
             <tr>  
-                <td><input type="radio" name="read_id" value='.$row["card_id"].' required>'.$row["card_id"].'</td>  
-                <td>'.$row["full_name"].'</td> 
-                <td>'.$row["birth_date"].'</td> 
-                <td>'.$row["phone"].'</td> 
-                <td>'.$row["card_points"].'</td> 
-                <td>'.$row["age"].'</td>
-                <td>'.$row["family_status"].'</td>
-                <td>'.$row["address"].'</td>
-                <td>'.$row["postal_code"].'</td>
-                <td>'.$row["city"].'</td> 
-                <td>'.$row["pet"].'</td> 
-                <td>'.$row["gender"].'</td>  
-                <td>'.$row["email"].'</td>  
-            </tr>  
+                <td>{{name}}</td> 
+                <td>{{lastname}}</td> 
+                <td>{{phone}}</td> 
+                <!-- {% if active %}
+                    <td class="checkmark">{{active}}</td> 
+                    //<td id="greenBox">{{active}}</td>  
+                {% else %}
+                    <td id="orangeBox">X</td> 
+                {% endif %} -->
+                <td>{{active}}</td>
+            </tr> 
         </table> 
 
         {% for order in orders%}

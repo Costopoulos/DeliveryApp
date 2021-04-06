@@ -10,7 +10,7 @@ class driver(models.Model):
     isBusy          = models.BooleanField(default=False)
    
 class store(models.Model):
-    user            = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user            = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True )
     name            = models.CharField(max_length=45)
     adress          = models.CharField(max_length=1024)
     phone           = models.CharField(max_length=15)
