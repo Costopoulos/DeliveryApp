@@ -2,11 +2,20 @@
 
 {% block content %}
 <!-- {{ object_list }} -->
-{% for instance in object_list%}
-    <p>{{instance.adress_to}}-{{ instance.created_on}}</p>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
 
-<table>  
+    
+<br>
+<div class="container">  
+    <h2 align="center" class="brand-text"><b>Ιστορικό Παραγγελιών</b></h2>  
+    <br />  
+    <div class="table-responsive">  
+         <table id="customer_data" class="table table-striped table-bordered">  
     <thead>  
         <tr>  
             <td><b>Διεύθυνση</b></td>  
@@ -17,14 +26,22 @@
             <!-- <td>ραδόθηκε ώρα</b></td> -->
         </tr>  
     </thead>  
-                  
+         <tbody>    
+            {% for instance in object_list%}    
     <tr>  
+        
         <td>{{instance.adress_to}}</td> 
         <td>{{instance.time_to_pickup}}</td> 
         <td>{{instance.running_now}}</td> 
         <td>{{instance.price}}</td> 
         <td>{{instance.created_on}}</td>
+        
     </tr> 
+    {% endfor%}
+</tbody> 
 </table> 
-{% endfor%}
+</div>
+</div>
+
+
 {% endblock %} 

@@ -78,17 +78,20 @@
         <h1>Ιστορικό</h1>
     </div> -->
     {% block base %}
-      {%if user.is_authenticated%} <h1><b>Γεια σας {{user}}</b></h1>  {%endif%}
+      {%if user.is_authenticated%} <h1 align="center"><b>Γεια σας {{user}}</b></h1>  {%endif%}
     {% endblock %}
 
     {% if user.is_authenticated %}
         <!-- <h1><b>Γεια σας {{store}}</b></h1> -->
-        <h2>{{storeaddress}}</h2>
+        <h2 align="center">{{storeaddress}}</h2>
 
         <!--<h2>Αυτός είναι ο οδηγός σας για σήμερα</h2>-->
         <!-- <p>{{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{username}}</p> -->
-
-        <table>  
+        <div class="container">  
+        <h2 align="center" class="brand-text"><b>O οδηγός σας</b></h2>  
+        <br />  
+        <div class="table-responsive">
+        <table id="customer_data" class="table table-striped table-bordered">  
             <thead>  
                 <tr>  
                     <td><b>Όνομα</b></td>  
@@ -111,6 +114,8 @@
                 <td>{{active}}</td>
             </tr> 
         </table> 
+        </div>
+        </div>
 
         {% for order in orders%}
             <li> {{order.store.name}} </li>
