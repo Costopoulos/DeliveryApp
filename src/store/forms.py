@@ -1,6 +1,6 @@
 from driver.models import order
 from django import forms
-
+from datetimewidget.widgets import DateTimeWidget
 
 
 class OrderForm(forms.ModelForm):
@@ -41,3 +41,6 @@ class OrderForm(forms.ModelForm):
             'adress_to',
             'price'
         ]
+        # widgets = {
+        # 'datetime':DateTimeWidget(attrs={'id':""}, usel10n=True, bootstrap_version=3)
+        # }

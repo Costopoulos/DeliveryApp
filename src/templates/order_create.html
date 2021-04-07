@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+    {{ form.media }}
+    </head>
 <style>
     .button3{
                 background-color: #FF7F50;
@@ -18,7 +23,7 @@
 <form method='POST'>{% csrf_token %}
     <div class="container">  
         <h2 align="center" class="brand-text"><b>Νέα Παραγγελία</b></h2>  
-            {{  form.as_p }}
+            {{  form.as_p }} <!--as_table-->
     </div>
 <input type= 'submit' value='Υποβολή Παραγγελίας' class="btn button3 align=center">
 </form>

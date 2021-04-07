@@ -68,7 +68,7 @@ def today_orders_list(request):
     user=request.user
     today=datetime.today()
     mystore=store.objects.get(user_id=user)
-    queryset=order.objects.filter(store=mystore)
+    queryset=order.objects.filter(store=mystore).order_by("-created_on")
     context ={
         "object_list": queryset
     }

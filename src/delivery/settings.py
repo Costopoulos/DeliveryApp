@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'pages',
+    'datetimewidget',
 ]
 
 REST_FRAMEWORK = {
@@ -72,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'delivery.urls'
@@ -149,13 +151,13 @@ AUTHENTICATION_BACKENDS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC'#'GMT+3'#'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False#True
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

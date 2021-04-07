@@ -24,3 +24,4 @@ class order(models.Model):
     finished_on     = models.DateTimeField(auto_now=True)
     running_now     = models.BooleanField(default=False) #if order is picked up
     store           = models.ForeignKey(store, on_delete=models.CASCADE)
+    isDelivered     = models.BooleanField(default=False)
