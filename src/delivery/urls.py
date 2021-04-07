@@ -22,14 +22,16 @@ from django.urls import path,include
 from django.conf.urls import url
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.authtoken import views
-from driver.views import OrdeListView, mystores_jsonview
 from pages.views import *
+from driver.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('store/', mydriver_view),
-    path('api/', OrdeListView.as_view),
-    path('api/stores', mystores_jsonview),
+    path('api/', OrdersReadyToPickup.as_view()),
+    path('api/history',OrderHistory.as_view()),
+    path('api/stores', MyStoreList_api.as_view()),
     path('create/', order_create_view),
     path('orders/', today_orders_list),
     path('accounts/', include('allauth.urls')),
