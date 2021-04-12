@@ -1,5 +1,5 @@
 # DeliveryApp
 
-Delivery App currently developed by me and a colleague. 
+Delivery App currently being developed by me and a colleague. 
 
 Expected to air on May.
