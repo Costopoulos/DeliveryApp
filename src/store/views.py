@@ -8,7 +8,7 @@ from django.utils.timezone import datetime
 from .forms import OrderForm
 from rest_framework.response import Response
 from rest_framework import status
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib import messages
 
 
@@ -56,6 +56,7 @@ def order_create_view(request):
         instance.store = request.user.store
         instance.save()
         messages.success(request, "Η παραγγελία δημιουργήθηκε")
+        return HttpResponseRedirect('http://localhost:8000/orders/')
 
     context = { 
         'form': form
