@@ -16,6 +16,7 @@ from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from .serializers import *
 from django.contrib.auth.models import User
+from rest_framework import permissions
 from rest_framework import generics
 from rest_framework.permissions import (
     AllowAny,
@@ -24,7 +25,7 @@ from rest_framework.permissions import (
 
     )
 from rest_framework import generics
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView,UpdateAPIView
 
 
 from django.views.generic import (
@@ -121,10 +122,94 @@ class OrderHistory(ListAPIView):
         queryset= order.objects.select_related('store').filter(isDelivered=True ,store__in=mystores).order_by('-created_on')
         
         return queryset 
+
+
+class OrderPickedUp(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class= OrderPickedUpSerializer
+    lookup_field= 'id'
+
+
+    def get_queryset(self):
+        user = self.request.user
+        mystores=store.objects.filter(driver=user.driver)  
+        queryset= order.objects.select_related('store').filter(running_now=False ,store__in=mystores)
+        
+        return queryset 
+
+class OrderDelivered(UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class= OrderDeliveredSerializer
+    lookup_field= 'id'
+
+
+    def get_queryset(self):
+        user = self.request.user
+        mystores=store.objects.filter(driver=user.driver)  
+        queryset= order.objects.select_related('store').filter(isDelivered=False ,store__in=mystores)
+        
+        return queryset 
+            
+                
+
+
+# class IsTheDriverOrReadOnly(permissions.BasePermission):
+#     """
+#     Custom permission to only allow owners of an object to edit it.
+#     """
+
+#     def has_object_permission(self, request, view, obj):
+#         # Read permissions are allowed to any request,
+#         # so we'll always allow GET, HEAD or OPTIONS requests.
+#         if request.method in permissions.SAFE_METHODS:
+#             return True
+
+#         # Write permissions are only allowed to the owner of the snippet.
+#         return obj.user == request.user.id
+
+
+
+# class DriverUpdate(UpdateAPIView):
+#     permission_classes = [IsAuthenticated,IsTheDriverOrReadOnly]
+#     serializer_class= DriverUpdateSerializer
+#     lookup_field= 'user'
+
+#     def get_queryset(self):
+#         queryset=driver.objects.all()  
     
+        
+#         return queryset 
 
+from rest_framework import generics, mixins, permissions
 
-         
+# User = get_user_model()
+
+class UserIsOwnerOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.user == request.user.id
+
+class UserProfileChangeAPIView(generics.RetrieveAPIView,
+                               mixins.DestroyModelMixin,
+                               mixins.UpdateModelMixin):
+    permission_classes = (
+        permissions.IsAuthenticated,
+        UserIsOwnerOrReadOnly,
+    )
+    serializer_class = DriverUpdateSerializer
+    # parser_classes = (MultiPartParser, FormParser,)
+
+    def get_object(self):
+        user = self.kwargs["user"]
+        obj = get_object_or_404(driver, user=user)
+        return obj
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
 
 
 
@@ -153,7 +238,6 @@ class OrderHistory(ListAPIView):
                                                             # myid=user.id
                                                             # mydriver=driver.objects.get(user=myid)
                                                             # myids = mydriver.user_id
-    filter_backends =[SearchFilter]
 
        # user= self.request.user     
         # myid=user.id

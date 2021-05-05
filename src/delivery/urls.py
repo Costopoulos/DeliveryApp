@@ -40,4 +40,8 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
     path('test/', greeklogin),
+    path('api/orderpickedup/<id>', OrderPickedUp.as_view()),
+    path('api/orderdelivered/<id>', OrderDelivered.as_view()),
+    path('api/driverupdate/<user>', UserProfileChangeAPIView.as_view()),
+
 ]
