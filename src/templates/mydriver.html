@@ -78,7 +78,7 @@
         <h1>Ιστορικό</h1>
     </div> -->
     {% block base %}
-      {%if user.is_authenticated%} <h1 align="center"><b>Γεια σας {{user}}</b></h1>  {%endif%}
+      {%if user.is_authenticated%} <h1 align="center"><b>Γεια σας {{store}}</b></h1>  {%endif%}
     {% endblock %}
 
     {% if user.is_authenticated %}

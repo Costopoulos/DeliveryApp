@@ -6,14 +6,10 @@ from django.views import View
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.utils.timezone import datetime
 from .forms import OrderForm
-<<<<<<< HEAD
-
-=======
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib import messages
->>>>>>> checkifworking
 
 
 
@@ -28,6 +24,7 @@ def mydriver_view(request):
 
     context = { 
         'store' : mystore.name,
+        'storeaddress': mystore.adress,
         'name' : obj.first_name,
         'lastname' : obj.last_name,
         'phone' : obj.phoneNo,
