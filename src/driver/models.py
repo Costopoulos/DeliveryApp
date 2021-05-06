@@ -29,3 +29,4 @@ class order(models.Model):
     running_now     = models.BooleanField(default=False) #isPickedup
     store           = models.ForeignKey(store, on_delete=models.CASCADE)
     isDelivered     = models.BooleanField(default=False)
+    isPaid          = models.BooleanField(default=False)

@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from driver import views
 from store.views import mydriver_view, order_create_view, today_orders_list
 from django.contrib import admin
@@ -24,7 +24,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.authtoken import views
 from pages.views import *
 from driver.views import *
-
+from django.conf import settings
 from django.views.static import serve
 from django.conf.urls import url
 
