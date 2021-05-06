@@ -29,7 +29,9 @@ def mydriver_view(request):
         'lastname' : obj.last_name,
         'phone' : obj.phoneNo,
         'active'  :  obj.isBusy ,
-        'username'  : user.username
+        'username'  : user.username,
+        'starthour' : obj.givenHourStart,
+        'endhour' : obj.givenHourEnd
                
     }
     
