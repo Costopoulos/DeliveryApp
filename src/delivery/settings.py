@@ -26,7 +26,7 @@ SECRET_KEY = 'n%#z09+23y16+l@9&2ct!e13x+48_h9!y3#qoah3uz0$7q76(s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] #'*'
+ALLOWED_HOSTS = ['deliverydemopower.herokuapp.com', 'localhost'] #'*'
 
 
 # Application definition
