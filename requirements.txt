@@ -2,3 +2,4 @@ requests==2.22.0
 django_datetime_widget==0.9.3
 Django==3.1.7
 djangorestframework==3.12.4
+django-crispy-forms==1.11.2
