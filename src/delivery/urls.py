@@ -25,6 +25,7 @@ from rest_framework.authtoken import views
 from pages.views import *
 from driver.views import *
 
+from django.conf import settings
 from django.views.static import serve
 from django.conf.urls import url
 
@@ -46,7 +47,7 @@ urlpatterns = [
     path('api/orderdelivered/<id>', OrderDelivered.as_view()),
     path('api/driverupdate/<user>', UserProfileChangeAPIView.as_view()),
 
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 
 ]
