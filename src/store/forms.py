@@ -34,12 +34,22 @@ class OrderForm(forms.ModelForm):
                                 }
                         )
             )  
+    isPaid = forms.BooleanField(
+                        required=False, 
+                        label='Έχει προπληρωθεί',
+                        # widget=forms.NumberInput(
+                        #         attrs={
+                        #             "placeholder": "Σε μορφή Ευρώ.Cents",
+                        #         }
+                        # )
+            ) 
     class Meta:
         model = order
         fields = [
             'time_to_pickup',
             'adress_to',
-            'price'
+            'price',
+            'isPaid'
         ]
         # widgets = {
         # 'datetime':DateTimeWidget(attrs={'id':""}, usel10n=True, bootstrap_version=3)

@@ -83,12 +83,12 @@
 
     {% if user.is_authenticated %}
         <!-- <h1><b>Γεια σας {{store}}</b></h1> -->
-        <h2 align="center">{{storeaddress}}</h2>
+        <h2 align="center">Διεύθυνση: {{storeaddress}}</h2>
 
         <!--<h2>Αυτός είναι ο οδηγός σας για σήμερα</h2>-->
         <!-- <p>{{  name }}, {{ lastname }}, {{phone}}, {{active}}, {{username}}</p> -->
         <div class="container">  
-        <h2 align="center" class="brand-text"><b>O οδηγός σας</b></h2>  
+        <h2 align="center" class="brand-text"><b>Oι οδηγοί σας για σήμερα</b></h2>  
         <br />  
         <div class="table-responsive">
         <table id="customer_data" class="table table-striped table-bordered">  
@@ -97,6 +97,7 @@
                     <td><b>Όνομα</b></td>  
                     <td><b>Επίθετο</b></td>  
                     <td><b>Τηλέφωνο</b></td>
+                    <td><b>Ωράριο</b></td>
                     <td><b>Είναι Ενεργός</b></td>
                 </tr>  
             </thead>  
@@ -111,8 +112,10 @@
                 {% else %}
                     <td id="orangeBox">X</td> 
                 {% endif %} -->
+                <td>ΟΧΙ ΑΚΟΜΗ ΕΤΟΙΜΟ</td>
                 <td>{{active}}</td>
-                
+
+                <i class="bi bi-check2"></i>
             </tr> 
         </table> 
         </div>

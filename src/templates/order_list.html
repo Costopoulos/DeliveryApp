@@ -24,6 +24,7 @@
             <td><b>Έχει παραδοθεί</b></td>
             <td><b>Τιμή</b></td>
             <td><b>Δημιουργήθηκε</b></td>
+            <td><b>Έχει προπληρωθεί</b></td>
             <!-- <td>ραδόθηκε ώρα</b></td> -->
         </tr>  
     </thead>  
@@ -37,6 +38,7 @@
         <td>{{instance.isDelivered}}</td> 
         <td>{{instance.price}}</td> 
         <td>{{instance.created_on}}</td>
+        <td>{{instance.isPaid}}</td>
         
     </tr> 
     {% endfor%}

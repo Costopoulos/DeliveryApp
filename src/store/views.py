@@ -6,7 +6,14 @@ from django.views import View
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.utils.timezone import datetime
 from .forms import OrderForm
+<<<<<<< HEAD
 
+=======
+from rest_framework.response import Response
+from rest_framework import status
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.contrib import messages
+>>>>>>> checkifworking
 
 
 
@@ -34,7 +41,15 @@ def mydriver_view(request):
 def order_create_view(request):
     form=OrderForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        instance = form.save(commit=False)
+        #instance.order = request.user.id
+        #instance.order = request.user.driver
+        
+        #instance.order = request.user.store
+        instance.store = request.user.store
+        instance.save()
+        messages.success(request, "Η παραγγελία δημιουργήθηκε")
+        return HttpResponseRedirect('http://localhost:8000/orders/')
 
     context = { 
         'form': form
