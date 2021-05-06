@@ -1,1 +1,1 @@
-web: gunicorn DeliveryApp.wsgi
+web: gunicorn src.wsgi
